@@ -1,5 +1,8 @@
 package com.ljh.vhr.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.util.Date;
 import java.io.Serializable;
 
@@ -9,77 +12,70 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-09-15 10:34:07
  */
-public class Salary implements Serializable {
-    private static final long serialVersionUID = 622004952366379418L;
-    
-    private Integer id;
+@TableName("salary")
+public class Salary extends Base implements Serializable {
+
     /**
-    * 基本工资
-    */
-    private Integer basicsalary;
+     * 基本工资
+     */
+    @TableField("basicSalary")
+    private Integer basicSalary;
     /**
-    * 奖金
-    */
+     * 奖金
+     */
     private Integer bonus;
     /**
-    * 午餐补助
-    */
-    private Integer lunchsalary;
+     * 午餐补助
+     */
+    @TableField("lunchSalary")
+    private Integer lunchSalary;
     /**
-    * 交通补助
-    */
-    private Integer trafficsalary;
+     * 交通补助
+     */
+    @TableField("trafficSalary")
+    private Integer trafficSalary;
     /**
-    * 应发工资
-    */
-    private Integer allsalary;
+     * 应发工资
+     */
+    @TableField("allSalary")
+    private Integer allSalary;
     /**
-    * 养老金基数
-    */
-    private Integer pensionbase;
+     * 养老金基数
+     */
+    @TableField("pensionBase")
+    private Integer pensionBase;
     /**
-    * 养老金比率
-    */
-    private Float pensionper;
+     * 养老金比率
+     */
+    @TableField("pensionPer")
+    private Float pensionPer;
     /**
-    * 启用时间
-    */
-    private Date createdate;
+     * 启用时间
+     */
+    @TableField("createDate")
+    private Date createDate;
     /**
-    * 医疗基数
-    */
-    private Integer medicalbase;
+     * 医疗基数
+     */
+    @TableField("medicalBase")
+    private Integer medicalBase;
     /**
-    * 医疗保险比率
-    */
-    private Float medicalper;
+     * 医疗保险比率
+     */
+    @TableField("medicalPer")
+    private Float medicalPer;
     /**
-    * 公积金基数
-    */
-    private Integer accumulationfundbase;
+     * 公积金基数
+     */
+    @TableField("accumulationFundBase")
+    private Integer accumulationFundBase;
     /**
-    * 公积金比率
-    */
-    private Float accumulationfundper;
-    
+     * 公积金比率
+     */
+    @TableField("accumulationFundPer")
+    private Float accumulationFundPer;
+
     private String name;
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getBasicsalary() {
-        return basicsalary;
-    }
-
-    public void setBasicsalary(Integer basicsalary) {
-        this.basicsalary = basicsalary;
-    }
 
     public Integer getBonus() {
         return bonus;
@@ -89,84 +85,92 @@ public class Salary implements Serializable {
         this.bonus = bonus;
     }
 
-    public Integer getLunchsalary() {
-        return lunchsalary;
+    public Integer getBasicSalary() {
+        return basicSalary;
     }
 
-    public void setLunchsalary(Integer lunchsalary) {
-        this.lunchsalary = lunchsalary;
+    public void setBasicSalary(Integer basicSalary) {
+        this.basicSalary = basicSalary;
     }
 
-    public Integer getTrafficsalary() {
-        return trafficsalary;
+    public Integer getLunchSalary() {
+        return lunchSalary;
     }
 
-    public void setTrafficsalary(Integer trafficsalary) {
-        this.trafficsalary = trafficsalary;
+    public void setLunchSalary(Integer lunchSalary) {
+        this.lunchSalary = lunchSalary;
     }
 
-    public Integer getAllsalary() {
-        return allsalary;
+    public Integer getTrafficSalary() {
+        return trafficSalary;
     }
 
-    public void setAllsalary(Integer allsalary) {
-        this.allsalary = allsalary;
+    public void setTrafficSalary(Integer trafficSalary) {
+        this.trafficSalary = trafficSalary;
     }
 
-    public Integer getPensionbase() {
-        return pensionbase;
+    public Integer getAllSalary() {
+        return allSalary;
     }
 
-    public void setPensionbase(Integer pensionbase) {
-        this.pensionbase = pensionbase;
+    public void setAllSalary(Integer allSalary) {
+        this.allSalary = allSalary;
     }
 
-    public Float getPensionper() {
-        return pensionper;
+    public Integer getPensionBase() {
+        return pensionBase;
     }
 
-    public void setPensionper(Float pensionper) {
-        this.pensionper = pensionper;
+    public void setPensionBase(Integer pensionBase) {
+        this.pensionBase = pensionBase;
     }
 
-    public Date getCreatedate() {
-        return createdate;
+    public Float getPensionPer() {
+        return pensionPer;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
+    public void setPensionPer(Float pensionPer) {
+        this.pensionPer = pensionPer;
     }
 
-    public Integer getMedicalbase() {
-        return medicalbase;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setMedicalbase(Integer medicalbase) {
-        this.medicalbase = medicalbase;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
-    public Float getMedicalper() {
-        return medicalper;
+    public Integer getMedicalBase() {
+        return medicalBase;
     }
 
-    public void setMedicalper(Float medicalper) {
-        this.medicalper = medicalper;
+    public void setMedicalBase(Integer medicalBase) {
+        this.medicalBase = medicalBase;
     }
 
-    public Integer getAccumulationfundbase() {
-        return accumulationfundbase;
+    public Float getMedicalPer() {
+        return medicalPer;
     }
 
-    public void setAccumulationfundbase(Integer accumulationfundbase) {
-        this.accumulationfundbase = accumulationfundbase;
+    public void setMedicalPer(Float medicalPer) {
+        this.medicalPer = medicalPer;
     }
 
-    public Float getAccumulationfundper() {
-        return accumulationfundper;
+    public Integer getAccumulationFundBase() {
+        return accumulationFundBase;
     }
 
-    public void setAccumulationfundper(Float accumulationfundper) {
-        this.accumulationfundper = accumulationfundper;
+    public void setAccumulationFundBase(Integer accumulationFundBase) {
+        this.accumulationFundBase = accumulationFundBase;
+    }
+
+    public Float getAccumulationFundPer() {
+        return accumulationFundPer;
+    }
+
+    public void setAccumulationFundPer(Float accumulationFundPer) {
+        this.accumulationFundPer = accumulationFundPer;
     }
 
     public String getName() {
@@ -177,4 +181,22 @@ public class Salary implements Serializable {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Salary{" +
+                "basicSalary=" + basicSalary +
+                ", bonus=" + bonus +
+                ", lunchSalary=" + lunchSalary +
+                ", trafficSalary=" + trafficSalary +
+                ", allSalary=" + allSalary +
+                ", pensionBase=" + pensionBase +
+                ", pensionPer=" + pensionPer +
+                ", createDate=" + createDate +
+                ", medicalBase=" + medicalBase +
+                ", medicalPer=" + medicalPer +
+                ", accumulationFundBase=" + accumulationFundBase +
+                ", accumulationFundPer=" + accumulationFundPer +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -1,5 +1,8 @@
 package com.ljh.vhr.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -8,37 +11,31 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-09-15 10:34:07
  */
-public class Menu implements Serializable {
-    private static final long serialVersionUID = 282394795097818367L;
-    
-    private Integer id;
-    
+@TableName("menu")
+public class Menu extends Base implements Serializable {
+
     private String url;
-    
+
     private String path;
-    
+
     private String component;
-    
+
     private String name;
-    
-    private String iconcls;
-    
+
+    @TableField("iconCls")
+    private String iconCls;
+
+    @TableField("keepAlive")
     private Boolean keepalive;
-    
-    private Boolean requireauth;
-    
-    private Integer parentid;
-    
+
+    @TableField("requireAuth")
+    private Boolean requireAuth;
+
+    @TableField("parentId")
+    private Integer parentId;
+
     private Boolean enabled;
 
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getUrl() {
         return url;
@@ -72,14 +69,6 @@ public class Menu implements Serializable {
         this.name = name;
     }
 
-    public String getIconcls() {
-        return iconcls;
-    }
-
-    public void setIconcls(String iconcls) {
-        this.iconcls = iconcls;
-    }
-
     public Boolean getKeepalive() {
         return keepalive;
     }
@@ -88,20 +77,28 @@ public class Menu implements Serializable {
         this.keepalive = keepalive;
     }
 
-    public Boolean getRequireauth() {
-        return requireauth;
+    public String getIconCls() {
+        return iconCls;
     }
 
-    public void setRequireauth(Boolean requireauth) {
-        this.requireauth = requireauth;
+    public void setIconCls(String iconCls) {
+        this.iconCls = iconCls;
     }
 
-    public Integer getParentid() {
-        return parentid;
+    public Boolean getRequireAuth() {
+        return requireAuth;
     }
 
-    public void setParentid(Integer parentid) {
-        this.parentid = parentid;
+    public void setRequireAuth(Boolean requireAuth) {
+        this.requireAuth = requireAuth;
+    }
+
+    public Integer getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
     public Boolean getEnabled() {
@@ -112,4 +109,18 @@ public class Menu implements Serializable {
         this.enabled = enabled;
     }
 
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "url='" + url + '\'' +
+                ", path='" + path + '\'' +
+                ", component='" + component + '\'' +
+                ", name='" + name + '\'' +
+                ", iconCls='" + iconCls + '\'' +
+                ", keepalive=" + keepalive +
+                ", requireAuth=" + requireAuth +
+                ", parentId=" + parentId +
+                ", enabled=" + enabled +
+                '}';
+    }
 }

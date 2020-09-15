@@ -1,10 +1,15 @@
 package com.ljh.vhr.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * (Hr)实体类
@@ -12,46 +17,45 @@ import java.util.Collection;
  * @author makejava
  * @since 2020-09-15 10:34:07
  */
-public class Hr implements Serializable, UserDetails {
-    private static final long serialVersionUID = 853277015530560529L;
+@TableName("hr")
+public class Hr extends Base implements Serializable, UserDetails {
     /**
-    * hrID
-    */
-    private Integer id;
-    /**
-    * 姓名
-    */
+     * 姓名
+     */
     private String name;
     /**
-    * 手机号码
-    */
+     * 手机号码
+     */
     private String phone;
     /**
-    * 住宅电话
-    */
+     * 住宅电话
+     */
     private String telephone;
     /**
-    * 联系地址
-    */
+     * 联系地址
+     */
     private String address;
-    
+
     private Boolean enabled;
     /**
-    * 用户名
-    */
+     * 用户名
+     */
     private String username;
     /**
-    * 密码
-    */
+     * 密码
+     */
     private String password;
-    
-    private String userface;
-    
+
+    @TableField("userface")
+    private String userFace;
+
     private String remark;
+
+    private List<Role> roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 
     @Override
@@ -74,13 +78,6 @@ public class Hr implements Serializable, UserDetails {
         return enabled;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -136,12 +133,12 @@ public class Hr implements Serializable, UserDetails {
         this.password = password;
     }
 
-    public String getUserface() {
-        return userface;
+    public String getUserFace() {
+        return userFace;
     }
 
-    public void setUserface(String userface) {
-        this.userface = userface;
+    public void setUserFace(String userFace) {
+        this.userFace = userFace;
     }
 
     public String getRemark() {
@@ -155,7 +152,6 @@ public class Hr implements Serializable, UserDetails {
     @Override
     public String toString() {
         return "Hr{" +
-                "id=" + id +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", telephone='" + telephone + '\'' +
@@ -163,7 +159,6 @@ public class Hr implements Serializable, UserDetails {
                 ", enabled=" + enabled +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", userface='" + userface + '\'' +
                 ", remark='" + remark + '\'' +
                 '}';
     }

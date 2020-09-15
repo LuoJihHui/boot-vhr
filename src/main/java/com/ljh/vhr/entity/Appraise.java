@@ -1,7 +1,10 @@
 package com.ljh.vhr.entity;
 
-import java.util.Date;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * (Appraise)实体类
@@ -9,36 +12,39 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-09-15 10:33:55
  */
-public class Appraise implements Serializable {
-    private static final long serialVersionUID = -48269477997375300L;
-    
-    private Integer id;
-    
+@TableName("appraise")
+public class Appraise extends Base implements Serializable {
+
     private Integer eid;
     /**
-    * 考评日期
-    */
-    private Date appdate;
+     * 考评日期
+     */
+    @TableField("appDate")
+    private Date appDate;
     /**
-    * 考评结果
-    */
-    private String appresult;
+     * 考评结果
+     */
+    @TableField("appResult")
+    private String appResult;
     /**
-    * 考评内容
-    */
-    private String appcontent;
+     * 考评内容
+     */
+    @TableField("appContent")
+    private String appContent;
     /**
-    * 备注
-    */
+     * 备注
+     */
     private String remark;
 
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "Appraise{" +
+                "eid=" + eid +
+                ", appDate=" + appDate +
+                ", appResult='" + appResult + '\'' +
+                ", appContent='" + appContent + '\'' +
+                ", remark='" + remark + '\'' +
+                '}';
     }
 
     public Integer getEid() {
@@ -49,28 +55,28 @@ public class Appraise implements Serializable {
         this.eid = eid;
     }
 
-    public Date getAppdate() {
-        return appdate;
+    public Date getAppDate() {
+        return appDate;
     }
 
-    public void setAppdate(Date appdate) {
-        this.appdate = appdate;
+    public void setAppDate(Date appDate) {
+        this.appDate = appDate;
     }
 
-    public String getAppresult() {
-        return appresult;
+    public String getAppResult() {
+        return appResult;
     }
 
-    public void setAppresult(String appresult) {
-        this.appresult = appresult;
+    public void setAppResult(String appResult) {
+        this.appResult = appResult;
     }
 
-    public String getAppcontent() {
-        return appcontent;
+    public String getAppContent() {
+        return appContent;
     }
 
-    public void setAppcontent(String appcontent) {
-        this.appcontent = appcontent;
+    public void setAppContent(String appContent) {
+        this.appContent = appContent;
     }
 
     public String getRemark() {

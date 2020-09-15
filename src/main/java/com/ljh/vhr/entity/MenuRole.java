@@ -1,5 +1,7 @@
 package com.ljh.vhr.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -8,23 +10,12 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-09-15 10:34:07
  */
-public class MenuRole implements Serializable {
-    private static final long serialVersionUID = 750247539226019981L;
-    
-    private Integer id;
-    
+@TableName("menu_role")
+public class MenuRole extends Base implements Serializable {
+
     private Integer mid;
-    
+
     private Integer rid;
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getMid() {
         return mid;
@@ -42,4 +33,11 @@ public class MenuRole implements Serializable {
         this.rid = rid;
     }
 
+    @Override
+    public String toString() {
+        return "MenuRole{" +
+                "mid=" + mid +
+                ", rid=" + rid +
+                '}';
+    }
 }

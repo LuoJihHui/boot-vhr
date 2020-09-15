@@ -1,5 +1,8 @@
 package com.ljh.vhr.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -8,31 +11,23 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-09-15 10:34:07
  */
-public class Department implements Serializable {
-    private static final long serialVersionUID = 336493910360861280L;
-    
-    private Integer id;
+@TableName("department")
+public class Department extends Base implements Serializable {
     /**
-    * 部门名称
-    */
+     * 部门名称
+     */
     private String name;
-    
-    private Integer parentid;
-    
-    private String deppath;
-    
+
+    @TableField("parentId")
+    private Integer parentId;
+
+    @TableField("depPath")
+    private String depPath;
+
     private Boolean enabled;
-    
-    private Boolean isparent;
 
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    @TableField("isParent")
+    private Boolean isParent;
 
     public String getName() {
         return name;
@@ -42,20 +37,28 @@ public class Department implements Serializable {
         this.name = name;
     }
 
-    public Integer getParentid() {
-        return parentid;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setParentid(Integer parentid) {
-        this.parentid = parentid;
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
-    public String getDeppath() {
-        return deppath;
+    public String getDepPath() {
+        return depPath;
     }
 
-    public void setDeppath(String deppath) {
-        this.deppath = deppath;
+    public void setDepPath(String depPath) {
+        this.depPath = depPath;
+    }
+
+    public Boolean getParent() {
+        return isParent;
+    }
+
+    public void setParent(Boolean parent) {
+        isParent = parent;
     }
 
     public Boolean getEnabled() {
@@ -66,12 +69,14 @@ public class Department implements Serializable {
         this.enabled = enabled;
     }
 
-    public Boolean getIsparent() {
-        return isparent;
+    @Override
+    public String toString() {
+        return "Department{" +
+                "name='" + name + '\'' +
+                ", parentId=" + parentId +
+                ", depPath='" + depPath + '\'' +
+                ", enabled=" + enabled +
+                ", isParent=" + isParent +
+                '}';
     }
-
-    public void setIsparent(Boolean isparent) {
-        this.isparent = isparent;
-    }
-
 }

@@ -7,24 +7,26 @@ import java.util.Date;
 import java.io.Serializable;
 
 /**
- * (Position)实体类
+ * (Joblevel)实体类
  *
  * @author makejava
  * @since 2020-09-15 10:34:07
  */
-@TableName("position")
-public class Position extends Base implements Serializable {
+@TableName("joblevel")
+public class JobLevel extends Base implements Serializable {
 
     /**
-     * 职位
+     * 职称名称
      */
     private String name;
+
+    @TableField("titleLevel")
+    private String titleLevel;
 
     @TableField("createDate")
     private Date createDate;
 
     private Boolean enabled;
-
 
     public String getName() {
         return name;
@@ -34,12 +36,12 @@ public class Position extends Base implements Serializable {
         this.name = name;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public String getTitleLevel() {
+        return titleLevel;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setTitleLevel(String titleLevel) {
+        this.titleLevel = titleLevel;
     }
 
     public Date getCreateDate() {
@@ -50,10 +52,19 @@ public class Position extends Base implements Serializable {
         this.createDate = createDate;
     }
 
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public String toString() {
-        return "Position{" +
+        return "JobLevel{" +
                 "name='" + name + '\'' +
+                ", titleLevel='" + titleLevel + '\'' +
                 ", createDate=" + createDate +
                 ", enabled=" + enabled +
                 '}';

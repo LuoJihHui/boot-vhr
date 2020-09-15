@@ -1,5 +1,8 @@
 package com.ljh.vhr.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -8,30 +11,20 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-09-15 10:34:07
  */
-public class HrRole implements Serializable {
-    private static final long serialVersionUID = 798769571608492790L;
-    
-    private Integer id;
-    
-    private Integer hrid;
-    
+@TableName("hr_role")
+public class HrRole extends Base implements Serializable {
+
+    @TableField("hrid")
+    private Integer hrId;
+
     private Integer rid;
 
-
-    public Integer getId() {
-        return id;
+    public Integer getHrId() {
+        return hrId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getHrid() {
-        return hrid;
-    }
-
-    public void setHrid(Integer hrid) {
-        this.hrid = hrid;
+    public void setHrId(Integer hrId) {
+        this.hrId = hrId;
     }
 
     public Integer getRid() {
@@ -42,4 +35,11 @@ public class HrRole implements Serializable {
         this.rid = rid;
     }
 
+    @Override
+    public String toString() {
+        return "HrRole{" +
+                "hrId=" + hrId +
+                ", rid=" + rid +
+                '}';
+    }
 }

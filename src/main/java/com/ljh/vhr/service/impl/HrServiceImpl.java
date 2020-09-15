@@ -1,5 +1,6 @@
 package com.ljh.vhr.service.impl;
 
+import com.ljh.vhr.entity.Hr;
 import com.ljh.vhr.mapper.HrMapper;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,6 +22,10 @@ public class HrServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        Hr hr = hrMapper.loadUserByName(username);
+        if (hr == null) {
+            throw new UsernameNotFoundException("当前用户不存在");
+        }
+        return hr;
     }
 }

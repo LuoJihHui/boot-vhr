@@ -7,39 +7,36 @@ import java.util.Date;
 import java.io.Serializable;
 
 /**
- * (Position)实体类
+ * (Msgcontent)实体类
  *
  * @author makejava
  * @since 2020-09-15 10:34:07
  */
-@TableName("position")
-public class Position extends Base implements Serializable {
+@TableName("msgcontent")
+public class MsgContent extends Base implements Serializable {
 
-    /**
-     * 职位
-     */
-    private String name;
+    private String title;
+
+    private String message;
 
     @TableField("createDate")
     private Date createDate;
 
-    private Boolean enabled;
 
-
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public String getMessage() {
+        return message;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Date getCreateDate() {
@@ -52,10 +49,10 @@ public class Position extends Base implements Serializable {
 
     @Override
     public String toString() {
-        return "Position{" +
-                "name='" + name + '\'' +
+        return "MsgContent{" +
+                "title='" + title + '\'' +
+                ", message='" + message + '\'' +
                 ", createDate=" + createDate +
-                ", enabled=" + enabled +
                 '}';
     }
 }

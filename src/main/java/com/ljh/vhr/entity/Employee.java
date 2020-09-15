@@ -1,5 +1,8 @@
 package com.ljh.vhr.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.util.Date;
 import java.io.Serializable;
 
@@ -9,129 +12,135 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-09-15 10:34:07
  */
-public class Employee implements Serializable {
-    private static final long serialVersionUID = -99449289821463211L;
+@TableName("employee")
+public class Employee extends Base implements Serializable {
     /**
-    * 员工编号
-    */
-    private Integer id;
-    /**
-    * 员工姓名
-    */
+     * 员工姓名
+     */
     private String name;
     /**
-    * 性别
-    */
+     * 性别
+     */
     private String gender;
     /**
-    * 出生日期
-    */
+     * 出生日期
+     */
     private Date birthday;
     /**
-    * 身份证号
-    */
-    private String idcard;
+     * 身份证号
+     */
+    @TableField("idCard")
+    private String idCard;
     /**
-    * 婚姻状况
-    */
+     * 婚姻状况
+     */
     private Object wedlock;
     /**
-    * 民族
-    */
-    private Integer nationid;
+     * 民族
+     */
+    @TableField("nationId")
+    private Integer nationId;
     /**
-    * 籍贯
-    */
-    private String nativeplace;
+     * 籍贯
+     */
+    @TableField("nativePlace")
+    private String nativePlace;
     /**
-    * 政治面貌
-    */
-    private Integer politicid;
+     * 政治面貌
+     */
+    @TableField("politicId")
+    private Integer politicId;
     /**
-    * 邮箱
-    */
+     * 邮箱
+     */
     private String email;
     /**
-    * 电话号码
-    */
+     * 电话号码
+     */
     private String phone;
     /**
-    * 联系地址
-    */
+     * 联系地址
+     */
     private String address;
     /**
-    * 所属部门
-    */
-    private Integer departmentid;
+     * 所属部门
+     */
+    @TableField("departmentId")
+    private Integer departmentId;
     /**
-    * 职称ID
-    */
-    private Integer joblevelid;
+     * 职称ID
+     */
+    @TableField("jobLevelId")
+    private Integer jobLevelId;
     /**
-    * 职位ID
-    */
-    private Integer posid;
+     * 职位ID
+     */
+    @TableField("posId")
+    private Integer posId;
     /**
-    * 聘用形式
-    */
-    private String engageform;
+     * 聘用形式
+     */
+    @TableField("engageForm")
+    private String engageForm;
     /**
-    * 最高学历
-    */
-    private Object tiptopdegree;
+     * 最高学历
+     */
+    @TableField("tiptopDegree")
+    private Object tiptopDegree;
     /**
-    * 所属专业
-    */
+     * 所属专业
+     */
     private String specialty;
     /**
-    * 毕业院校
-    */
+     * 毕业院校
+     */
     private String school;
     /**
-    * 入职日期
-    */
-    private Date begindate;
+     * 入职日期
+     */
+    @TableField("beginDate")
+    private Date beginDate;
     /**
-    * 在职状态
-    */
-    private Object workstate;
+     * 在职状态
+     */
+    @TableField("workState")
+    private Object workState;
     /**
-    * 工号
-    */
-    private String workid;
+     * 工号
+     */
+    @TableField("workID")
+    private String workID;
     /**
-    * 合同期限
-    */
-    private Object contractterm;
+     * 合同期限
+     */
+    @TableField("contractTerm")
+    private Object contractTerm;
     /**
-    * 转正日期
-    */
-    private Date conversiontime;
+     * 转正日期
+     */
+    @TableField("conversionTime")
+    private Date conversionTime;
     /**
-    * 离职日期
-    */
-    private Date notworkdate;
+     * 离职日期
+     */
+    @TableField("notWorkDate")
+    private Date notWorkDate;
     /**
-    * 合同起始日期
-    */
-    private Date begincontract;
+     * 合同起始日期
+     */
+    @TableField("beginContract")
+    private Date beginContract;
     /**
-    * 合同终止日期
-    */
-    private Date endcontract;
+     * 合同终止日期
+     */
+    @TableField("endContract")
+    private Date endContract;
     /**
-    * 工龄
-    */
-    private Integer workage;
+     * 工龄
+     */
+    @TableField("workAge")
+    private Integer workAge;
 
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -157,44 +166,12 @@ public class Employee implements Serializable {
         this.birthday = birthday;
     }
 
-    public String getIdcard() {
-        return idcard;
-    }
-
-    public void setIdcard(String idcard) {
-        this.idcard = idcard;
-    }
-
     public Object getWedlock() {
         return wedlock;
     }
 
     public void setWedlock(Object wedlock) {
         this.wedlock = wedlock;
-    }
-
-    public Integer getNationid() {
-        return nationid;
-    }
-
-    public void setNationid(Integer nationid) {
-        this.nationid = nationid;
-    }
-
-    public String getNativeplace() {
-        return nativeplace;
-    }
-
-    public void setNativeplace(String nativeplace) {
-        this.nativeplace = nativeplace;
-    }
-
-    public Integer getPoliticid() {
-        return politicid;
-    }
-
-    public void setPoliticid(Integer politicid) {
-        this.politicid = politicid;
     }
 
     public String getEmail() {
@@ -221,46 +198,6 @@ public class Employee implements Serializable {
         this.address = address;
     }
 
-    public Integer getDepartmentid() {
-        return departmentid;
-    }
-
-    public void setDepartmentid(Integer departmentid) {
-        this.departmentid = departmentid;
-    }
-
-    public Integer getJoblevelid() {
-        return joblevelid;
-    }
-
-    public void setJoblevelid(Integer joblevelid) {
-        this.joblevelid = joblevelid;
-    }
-
-    public Integer getPosid() {
-        return posid;
-    }
-
-    public void setPosid(Integer posid) {
-        this.posid = posid;
-    }
-
-    public String getEngageform() {
-        return engageform;
-    }
-
-    public void setEngageform(String engageform) {
-        this.engageform = engageform;
-    }
-
-    public Object getTiptopdegree() {
-        return tiptopdegree;
-    }
-
-    public void setTiptopdegree(Object tiptopdegree) {
-        this.tiptopdegree = tiptopdegree;
-    }
-
     public String getSpecialty() {
         return specialty;
     }
@@ -277,76 +214,180 @@ public class Employee implements Serializable {
         this.school = school;
     }
 
-    public Date getBegindate() {
-        return begindate;
+    public String getIdCard() {
+        return idCard;
     }
 
-    public void setBegindate(Date begindate) {
-        this.begindate = begindate;
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
-    public Object getWorkstate() {
-        return workstate;
+    public Integer getNationId() {
+        return nationId;
     }
 
-    public void setWorkstate(Object workstate) {
-        this.workstate = workstate;
+    public void setNationId(Integer nationId) {
+        this.nationId = nationId;
     }
 
-    public String getWorkid() {
-        return workid;
+    public String getNativePlace() {
+        return nativePlace;
     }
 
-    public void setWorkid(String workid) {
-        this.workid = workid;
+    public void setNativePlace(String nativePlace) {
+        this.nativePlace = nativePlace;
     }
 
-    public Object getContractterm() {
-        return contractterm;
+    public Integer getPoliticId() {
+        return politicId;
     }
 
-    public void setContractterm(Object contractterm) {
-        this.contractterm = contractterm;
+    public void setPoliticId(Integer politicId) {
+        this.politicId = politicId;
     }
 
-    public Date getConversiontime() {
-        return conversiontime;
+    public Integer getDepartmentId() {
+        return departmentId;
     }
 
-    public void setConversiontime(Date conversiontime) {
-        this.conversiontime = conversiontime;
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 
-    public Date getNotworkdate() {
-        return notworkdate;
+    public Integer getJobLevelId() {
+        return jobLevelId;
     }
 
-    public void setNotworkdate(Date notworkdate) {
-        this.notworkdate = notworkdate;
+    public void setJobLevelId(Integer jobLevelId) {
+        this.jobLevelId = jobLevelId;
     }
 
-    public Date getBegincontract() {
-        return begincontract;
+    public Integer getPosId() {
+        return posId;
     }
 
-    public void setBegincontract(Date begincontract) {
-        this.begincontract = begincontract;
+    public void setPosId(Integer posId) {
+        this.posId = posId;
     }
 
-    public Date getEndcontract() {
-        return endcontract;
+    public String getEngageForm() {
+        return engageForm;
     }
 
-    public void setEndcontract(Date endcontract) {
-        this.endcontract = endcontract;
+    public void setEngageForm(String engageForm) {
+        this.engageForm = engageForm;
     }
 
-    public Integer getWorkage() {
-        return workage;
+    public Object getTiptopDegree() {
+        return tiptopDegree;
     }
 
-    public void setWorkage(Integer workage) {
-        this.workage = workage;
+    public void setTiptopDegree(Object tiptopDegree) {
+        this.tiptopDegree = tiptopDegree;
     }
 
+    public Date getBeginDate() {
+        return beginDate;
+    }
+
+    public void setBeginDate(Date beginDate) {
+        this.beginDate = beginDate;
+    }
+
+    public Object getWorkState() {
+        return workState;
+    }
+
+    public void setWorkState(Object workState) {
+        this.workState = workState;
+    }
+
+    public String getWorkID() {
+        return workID;
+    }
+
+    public void setWorkID(String workID) {
+        this.workID = workID;
+    }
+
+    public Object getContractTerm() {
+        return contractTerm;
+    }
+
+    public void setContractTerm(Object contractTerm) {
+        this.contractTerm = contractTerm;
+    }
+
+    public Date getConversionTime() {
+        return conversionTime;
+    }
+
+    public void setConversionTime(Date conversionTime) {
+        this.conversionTime = conversionTime;
+    }
+
+    public Date getNotWorkDate() {
+        return notWorkDate;
+    }
+
+    public void setNotWorkDate(Date notWorkDate) {
+        this.notWorkDate = notWorkDate;
+    }
+
+    public Date getBeginContract() {
+        return beginContract;
+    }
+
+    public void setBeginContract(Date beginContract) {
+        this.beginContract = beginContract;
+    }
+
+    public Date getEndContract() {
+        return endContract;
+    }
+
+    public void setEndContract(Date endContract) {
+        this.endContract = endContract;
+    }
+
+    public Integer getWorkAge() {
+        return workAge;
+    }
+
+    public void setWorkAge(Integer workAge) {
+        this.workAge = workAge;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birthday=" + birthday +
+                ", idCard='" + idCard + '\'' +
+                ", wedlock=" + wedlock +
+                ", nationId=" + nationId +
+                ", nativePlace='" + nativePlace + '\'' +
+                ", politicId=" + politicId +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", departmentId=" + departmentId +
+                ", jobLevelId=" + jobLevelId +
+                ", posId=" + posId +
+                ", engageForm='" + engageForm + '\'' +
+                ", tiptopDegree=" + tiptopDegree +
+                ", specialty='" + specialty + '\'' +
+                ", school='" + school + '\'' +
+                ", beginDate=" + beginDate +
+                ", workState=" + workState +
+                ", workID='" + workID + '\'' +
+                ", contractTerm=" + contractTerm +
+                ", conversionTime=" + conversionTime +
+                ", notWorkDate=" + notWorkDate +
+                ", beginContract=" + beginContract +
+                ", endContract=" + endContract +
+                ", workAge=" + workAge +
+                '}';
+    }
 }

@@ -1,5 +1,8 @@
 package com.ljh.vhr.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.util.Date;
 import java.io.Serializable;
 
@@ -9,48 +12,86 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-09-15 10:34:07
  */
+@TableName("mail_send_log")
 public class MailSendLog implements Serializable {
-    private static final long serialVersionUID = 619988038729754148L;
-    
-    private String msgid;
-    
-    private Integer empid;
+
+    @TableField("msgId")
+    private String msgId;
+
+    @TableField("empId")
+    private Integer empId;
     /**
-    * 0发送中，1发送成功，2发送失败
-    */
+     * 0发送中，1发送成功，2发送失败
+     */
     private Integer status;
-    
-    private String routekey;
-    
+
+    @TableField("routeKey")
+    private String routeKey;
+
     private String exchange;
     /**
-    * 重试次数
-    */
+     * 重试次数
+     */
     private Integer count;
     /**
-    * 第一次重试时间
-    */
-    private Date trytime;
-    
-    private Date createtime;
-    
-    private Date updatetime;
+     * 第一次重试时间
+     */
+    @TableField("tryTime")
+    private Date tryTime;
+
+    @TableField("createTime")
+    private Date createTime;
+
+    @TableField("updateTime")
+    private Date updateTime;
 
 
-    public String getMsgid() {
-        return msgid;
+    public String getMsgId() {
+        return msgId;
     }
 
-    public void setMsgid(String msgid) {
-        this.msgid = msgid;
+    public void setMsgId(String msgId) {
+        this.msgId = msgId;
     }
 
-    public Integer getEmpid() {
-        return empid;
+    public Integer getEmpId() {
+        return empId;
     }
 
-    public void setEmpid(Integer empid) {
-        this.empid = empid;
+    public void setEmpId(Integer empId) {
+        this.empId = empId;
+    }
+
+    public String getRouteKey() {
+        return routeKey;
+    }
+
+    public void setRouteKey(String routeKey) {
+        this.routeKey = routeKey;
+    }
+
+    public Date getTryTime() {
+        return tryTime;
+    }
+
+    public void setTryTime(Date tryTime) {
+        this.tryTime = tryTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public Integer getStatus() {
@@ -61,13 +102,6 @@ public class MailSendLog implements Serializable {
         this.status = status;
     }
 
-    public String getRoutekey() {
-        return routekey;
-    }
-
-    public void setRoutekey(String routekey) {
-        this.routekey = routekey;
-    }
 
     public String getExchange() {
         return exchange;
@@ -85,28 +119,18 @@ public class MailSendLog implements Serializable {
         this.count = count;
     }
 
-    public Date getTrytime() {
-        return trytime;
+    @Override
+    public String toString() {
+        return "MailSendLog{" +
+                "msgId='" + msgId + '\'' +
+                ", empId=" + empId +
+                ", status=" + status +
+                ", routeKey='" + routeKey + '\'' +
+                ", exchange='" + exchange + '\'' +
+                ", count=" + count +
+                ", tryTime=" + tryTime +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
-
-    public void setTrytime(Date trytime) {
-        this.trytime = trytime;
-    }
-
-    public Date getCreatetime() {
-        return createtime;
-    }
-
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
-    }
-
-    public Date getUpdatetime() {
-        return updatetime;
-    }
-
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
-    }
-
 }

@@ -1,5 +1,7 @@
 package com.ljh.vhr.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 
 /**
@@ -8,23 +10,12 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-09-15 10:34:07
  */
-public class Empsalary implements Serializable {
-    private static final long serialVersionUID = 827601895228090214L;
-    
-    private Integer id;
-    
+@TableName("empsalary")
+public class EmpSalary extends Base implements Serializable {
+
     private Integer eid;
     
     private Integer sid;
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getEid() {
         return eid;
@@ -42,4 +33,11 @@ public class Empsalary implements Serializable {
         this.sid = sid;
     }
 
+    @Override
+    public String toString() {
+        return "EmpSalary{" +
+                "eid=" + eid +
+                ", sid=" + sid +
+                '}';
+    }
 }
