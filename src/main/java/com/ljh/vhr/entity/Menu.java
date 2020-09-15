@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * (Menu)实体类
@@ -25,17 +26,30 @@ public class Menu extends Base implements Serializable {
     @TableField("iconCls")
     private String iconCls;
 
-    @TableField("keepAlive")
-    private Boolean keepalive;
-
-    @TableField("requireAuth")
-    private Boolean requireAuth;
-
     @TableField("parentId")
     private Integer parentId;
 
     private Boolean enabled;
 
+    private Meta meta;
+
+    private List<Menu> children;
+
+    public Meta getMeta() {
+        return meta;
+    }
+
+    public void setMeta(Meta meta) {
+        this.meta = meta;
+    }
+
+    public List<Menu> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Menu> children) {
+        this.children = children;
+    }
 
     public String getUrl() {
         return url;
@@ -69,28 +83,12 @@ public class Menu extends Base implements Serializable {
         this.name = name;
     }
 
-    public Boolean getKeepalive() {
-        return keepalive;
-    }
-
-    public void setKeepalive(Boolean keepalive) {
-        this.keepalive = keepalive;
-    }
-
     public String getIconCls() {
         return iconCls;
     }
 
     public void setIconCls(String iconCls) {
         this.iconCls = iconCls;
-    }
-
-    public Boolean getRequireAuth() {
-        return requireAuth;
-    }
-
-    public void setRequireAuth(Boolean requireAuth) {
-        this.requireAuth = requireAuth;
     }
 
     public Integer getParentId() {
@@ -117,10 +115,10 @@ public class Menu extends Base implements Serializable {
                 ", component='" + component + '\'' +
                 ", name='" + name + '\'' +
                 ", iconCls='" + iconCls + '\'' +
-                ", keepalive=" + keepalive +
-                ", requireAuth=" + requireAuth +
                 ", parentId=" + parentId +
                 ", enabled=" + enabled +
+                ", meta=" + meta +
+                ", children=" + children +
                 '}';
     }
 }

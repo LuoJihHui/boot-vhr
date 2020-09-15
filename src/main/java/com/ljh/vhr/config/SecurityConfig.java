@@ -18,6 +18,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.io.PrintWriter;
 
 /**
+ * Security配置
+ *
  * @author LuoJiaHui
  * @date 2020/9/15 12:20
  * @description
