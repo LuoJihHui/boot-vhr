@@ -1,5 +1,8 @@
 package com.ljh.vhr.api;
 
+import com.ljh.vhr.entity.Menu;
+import com.ljh.vhr.service.MenuService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +21,9 @@ import java.util.Map;
 @RequestMapping("/menu")
 public class MenuApi {
 
+    @Autowired
+    private MenuService menuService;
+
     /**
      * 获取列表菜单树
      *
@@ -28,6 +34,19 @@ public class MenuApi {
      **/
     @GetMapping("/tree/info")
     public List<Map<String, Object>> listMenuTree() {
-        return null;
+        return menuService.listMenuTree();
+    }
+
+    /**
+     * 获取所有菜单及其角色
+     *
+     * @param
+     * @return java.util.List<com.ljh.vhr.entity.Menu>
+     * @auth LuoJiaHui
+     * @Date 2020/9/16 16:49
+     **/
+    @GetMapping("/all")
+    public List<Menu> getAll() {
+        return menuService.getAllMenuWithRole();
     }
 }

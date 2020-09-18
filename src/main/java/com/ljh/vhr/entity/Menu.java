@@ -35,6 +35,16 @@ public class Menu extends Base implements Serializable {
 
     private List<Menu> children;
 
+    private List<Role> roles;
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
     public Meta getMeta() {
         return meta;
     }
@@ -119,6 +129,7 @@ public class Menu extends Base implements Serializable {
                 ", enabled=" + enabled +
                 ", meta=" + meta +
                 ", children=" + children +
+                ", roles=" + roles +
                 '}';
     }
 }

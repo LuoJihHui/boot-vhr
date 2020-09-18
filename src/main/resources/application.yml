@@ -6,6 +6,12 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
 
+  redis:
+    url: localhost
+    port: 6379
+    password:
+    database: 1
+
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   configuration:

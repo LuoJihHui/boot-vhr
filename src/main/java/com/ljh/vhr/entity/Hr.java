@@ -78,6 +78,13 @@ public class Hr extends Base implements Serializable, UserDetails {
         return enabled;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 
     public String getName() {
         return name;
@@ -152,14 +159,16 @@ public class Hr extends Base implements Serializable, UserDetails {
     @Override
     public String toString() {
         return "Hr{" +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", address='" + address + '\'' +
                 ", enabled=" + enabled +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", userFace='" + userFace + '\'' +
                 ", remark='" + remark + '\'' +
+                ", roles=" + roles +
                 '}';
     }
 }
