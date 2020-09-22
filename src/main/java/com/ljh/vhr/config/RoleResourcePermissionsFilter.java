@@ -57,6 +57,6 @@ public class RoleResourcePermissionsFilter implements FilterInvocationSecurityMe
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return false;
+        return true;
     }
 }
