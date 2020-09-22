@@ -141,6 +141,15 @@ public class Employee extends Base implements Serializable {
     @TableField("workAge")
     private Integer workAge;
 
+    private Boolean enabled;
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 
     public String getName() {
         return name;
@@ -388,6 +397,7 @@ public class Employee extends Base implements Serializable {
                 ", beginContract=" + beginContract +
                 ", endContract=" + endContract +
                 ", workAge=" + workAge +
+                ", enabled=" + enabled +
                 '}';
     }
 }

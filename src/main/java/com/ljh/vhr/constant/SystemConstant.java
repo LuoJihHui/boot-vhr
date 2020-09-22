@@ -19,4 +19,6 @@ public class SystemConstant {
      * @Date 2020/9/16 17:13
      **/
     public static final String ANONYMOUS_LOGO = "ROLE_LOGIN";
+
+    public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 }

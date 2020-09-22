@@ -106,6 +106,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     out.close();
                 })).permitAll()
                 .and()
-                .csrf().disable();
+                .csrf().disable()
+                // 配置请求失败后的操作,不要默认的重定向
+                .exceptionHandling()
+                .authenticationEntryPoint(((request, response, exception) -> {
+                    response.setContentType("application/json;charset=utf-8");
+                    ResponseBean responseBean = new ResponseBean(ResponseCode.ERROR);
+                    if (exception instanceof InsufficientAuthenticationException) {
+                        responseBean.setData("尚未登录,非法请求,请联系管理员!");
+                    }
+                    PrintWriter out = response.getWriter();
+                    out.write(new ObjectMapper().writeValueAsString(responseBean));
+                    out.flush();
+                    out.close();
+                }));
     }
 }
