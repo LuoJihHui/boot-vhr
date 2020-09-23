@@ -3,8 +3,10 @@ package com.ljh.vhr.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.convert.Convert;
+import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.ljh.vhr.constant.api.ResponseBean;
 import com.ljh.vhr.entity.Employee;
 import com.ljh.vhr.entity.Position;
 import com.ljh.vhr.exception.BasicException;
@@ -12,11 +14,9 @@ import com.ljh.vhr.mapper.EmployeeMapper;
 import com.ljh.vhr.mapper.PositionMapper;
 import com.ljh.vhr.service.PositionService;
 import com.ljh.vhr.util.CommonUtils;
-import com.ljh.vhr.util.DateUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -44,15 +44,10 @@ public class PositionServiceImpl implements PositionService {
     @Override
     public List<Map<String, Object>> listPositions() {
         QueryWrapper<Position> wrapper = new QueryWrapper<>();
-        wrapper.select("id,name,createDate")
+        wrapper.select("id,name,createDate,update_date updateDate")
                 .eq("enabled", true)
                 .orderByAsc("update_date");
-        List<Map<String, Object>> maps = positionMapper.selectMaps(wrapper);
-        maps.forEach(map -> {
-            Date createDate = Convert.toDate(map.get("createDate"));
-            map.replace("createDate", DateUtils.formatTimestampToString(createDate));
-        });
-        return maps;
+        return positionMapper.selectMaps(wrapper);
     }
 
     /**
@@ -64,7 +59,7 @@ public class PositionServiceImpl implements PositionService {
      * @Date 2020/9/22 16:22
      **/
     @Override
-    public Boolean position(Map<String, Object> map) {
+    public ResponseBean position(Map<String, Object> map) {
         String jobLevelName = Convert.toStr(map.get("name"));
         QueryWrapper<Position> wrapper = new QueryWrapper<>();
         wrapper.eq("name", jobLevelName).eq("enabled", true);
@@ -78,10 +73,12 @@ public class PositionServiceImpl implements PositionService {
         List<Position> positionList = positionMapper.selectList(wrapper1);
         if (CollUtil.isNotEmpty(positionList)) {
             Position position = positionList.get(0);
-            return updatePosition(Convert.toStr(position.getId()), "1", "enabled");
+            Boolean updatePosition = updatePosition(Convert.toStr(position.getId()), "1", "enabled");
+            return new ResponseBean("添加职位成功!", updatePosition);
         }
         Position position = BeanUtil.mapToBean(map, Position.class, CommonUtils.getCopyOptions());
-        return positionMapper.insert(position) > 0;
+        position.setCreateDate(DateUtil.date());
+        return new ResponseBean("添加职位成功!", positionMapper.insert(position) > 0);
     }
 
     /**
@@ -93,8 +90,9 @@ public class PositionServiceImpl implements PositionService {
      * @Date 2020/9/22 16:30
      **/
     @Override
-    public Boolean updatePosition(Map<String, Object> map) {
-        return updatePosition(Convert.toStr(map.get("id")), Convert.toStr(map.get("name")), "name");
+    public ResponseBean updatePosition(Map<String, Object> map) {
+        Boolean updatePosition = updatePosition(Convert.toStr(map.get("id")), Convert.toStr(map.get("name")), "name");
+        return new ResponseBean("更新职位成功!", updatePosition);
     }
 
     /**
@@ -106,7 +104,7 @@ public class PositionServiceImpl implements PositionService {
      * @Date 2020/9/22 16:32
      **/
     @Override
-    public Boolean delPosition(String id) {
+    public ResponseBean delPosition(String id) {
         // 查询该职位是否有引用
         QueryWrapper<Employee> wrapper = new QueryWrapper<>();
         wrapper.eq("posId", id).eq("enabled", true);
@@ -114,7 +112,7 @@ public class PositionServiceImpl implements PositionService {
         if (CollUtil.isNotEmpty(employees)) {
             throw new BasicException("当前职位存在正式员工,不能删除~");
         }
-        return updatePosition(id, "0", "enabled");
+        return new ResponseBean("删除职位成功!", updatePosition(id, "0", "enabled"));
     }
 
     /**

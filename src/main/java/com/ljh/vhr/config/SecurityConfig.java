@@ -71,7 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     PrintWriter out = response.getWriter();
                     Hr principal = (Hr) authentication.getPrincipal();
                     principal.setPassword(null);
-                    ResponseBean responseBean = new ResponseBean(principal);
+                    ResponseBean responseBean = new ResponseBean("登录成功!", principal);
                     out.write(new ObjectMapper().writeValueAsString(responseBean));
                     out.flush();
                     out.close();
@@ -99,7 +99,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutSuccessHandler(((request, response, authentication) -> {
                     response.setContentType("application/json;charset=utf-8");
-                    ResponseBean responseBean = new ResponseBean("注销成功!");
+                    ResponseBean responseBean = new ResponseBean("注销成功!", true);
                     PrintWriter out = response.getWriter();
                     out.write(new ObjectMapper().writeValueAsString(responseBean));
                     out.flush();
@@ -113,7 +113,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     response.setContentType("application/json;charset=utf-8");
                     ResponseBean responseBean = new ResponseBean(ResponseCode.ERROR);
                     if (exception instanceof InsufficientAuthenticationException) {
-                        responseBean.setData("尚未登录,非法请求,请联系管理员!");
+                        responseBean.setMsg("尚未登录,非法请求,请联系管理员!");
                     }
                     PrintWriter out = response.getWriter();
                     out.write(new ObjectMapper().writeValueAsString(responseBean));

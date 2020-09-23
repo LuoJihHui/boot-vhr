@@ -18,11 +18,11 @@ public enum ResponseCode {
     NO_DATA_FOUND(40010, "No data found");
 
     private Integer code;
-    private String msg;
+    private String data;
 
-    ResponseCode(Integer code, String msg) {
+    ResponseCode(Integer code, String data) {
         this.code = code;
-        this.msg = msg;
+        this.data = data;
     }
 
     public Integer getCode() {
@@ -30,6 +30,6 @@ public enum ResponseCode {
     }
 
     public String getMsg() {
-        return msg;
+        return data;
     }
 }

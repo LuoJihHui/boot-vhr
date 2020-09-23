@@ -18,9 +18,14 @@ public class ResponseBean {
         this.setData(data);
     }
 
+    public ResponseBean(String msg, Object data) {
+        this.msg = msg;
+        this.data = data;
+    }
+
     public ResponseBean(ResponseCode code) {
         this.setCode(code.getCode());
-        this.setMsg(code.getMsg());
+        this.setData(code.getMsg());
     }
 
     public void setCode(Integer code) {

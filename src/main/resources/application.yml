@@ -1,4 +1,8 @@
 spring:
+  # 日期自动格式化
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss # 格式化时间
+    time-zone: GMT+8 # 时区
   datasource:
     url: jdbc:mysql:///vhr?useUncode=true&characterEncoding=UTF-8
     username: root

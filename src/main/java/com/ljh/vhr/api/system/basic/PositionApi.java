@@ -1,5 +1,6 @@
 package com.ljh.vhr.api.system.basic;
 
+import com.ljh.vhr.constant.api.ResponseBean;
 import com.ljh.vhr.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +44,7 @@ public class PositionApi {
      * @Date 2020/9/22 16:22
      **/
     @PostMapping("/")
-    public Boolean addPosition(@RequestBody Map<String, Object> map) {
+    public ResponseBean addPosition(@RequestBody Map<String, Object> map) {
         return positionService.position(map);
     }
 
@@ -56,7 +57,7 @@ public class PositionApi {
      * @Date 2020/9/22 16:30
      **/
     @PutMapping("/")
-    public Boolean updatePosition(@RequestBody Map<String, Object> map) {
+    public ResponseBean updatePosition(@RequestBody Map<String, Object> map) {
         return positionService.updatePosition(map);
     }
 
@@ -69,7 +70,7 @@ public class PositionApi {
      * @Date 2020/9/22 16:32
      **/
     @DeleteMapping("/{id}")
-    public Boolean delPosition(@PathVariable String id) {
+    public ResponseBean delPosition(@PathVariable String id) {
         return positionService.delPosition(id);
     }
 }
