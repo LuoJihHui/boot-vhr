@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 职位管理接口
@@ -72,5 +73,18 @@ public class PositionApi {
     @DeleteMapping("/{id}")
     public ResponseBean delPosition(@PathVariable String id) {
         return positionService.delPosition(id);
+    }
+
+    /**
+     * 批量删除
+     *
+     * @param ids
+     * @return com.ljh.vhr.constant.api.ResponseBean
+     * @auth LuoJiaHui
+     * @Date 2020/9/23 16:58
+     **/
+    @DeleteMapping("/many")
+    public ResponseBean delPositionByIds(@RequestBody Set<String> ids) {
+        return positionService.delPositionByIds(ids);
     }
 }

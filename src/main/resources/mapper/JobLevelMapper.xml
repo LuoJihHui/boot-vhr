@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ljh.vhr.mapper.JobLevelMapper">
+
+    <select id="loadJobLevelWithTitleLevel" resultType="java.util.Map">
+        SELECT
+            jl.id,
+            jl.name,
+            tl.name titleLevel,
+            jl.createDate,
+            jl.enabled
+        FROM
+            `joblevel` jl
+        LEFT JOIN title_level tl ON jl.titleLevel = tl.id
+        WHERE
+            jl.enabled >= 0
+        ORDER BY jl.titleLevel ASC
+    </select>
+</mapper>

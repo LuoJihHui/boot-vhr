@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author LuoJiaHui
@@ -44,7 +45,7 @@ public class PositionServiceImpl implements PositionService {
     @Override
     public List<Map<String, Object>> listPositions() {
         QueryWrapper<Position> wrapper = new QueryWrapper<>();
-        wrapper.select("id,name,createDate,update_date updateDate")
+        wrapper.select("id,name,createDate,update_date updateDate,enabled")
                 .eq("enabled", true)
                 .orderByAsc("update_date");
         return positionMapper.selectMaps(wrapper);
@@ -113,6 +114,22 @@ public class PositionServiceImpl implements PositionService {
             throw new BasicException("当前职位存在正式员工,不能删除~");
         }
         return new ResponseBean("删除职位成功!", updatePosition(id, "0", "enabled"));
+    }
+
+    /**
+     * 匹配删除
+     *
+     * @param ids
+     * @return com.ljh.vhr.constant.api.ResponseBean
+     * @auth LuoJiaHui
+     * @Date 2020/9/23 16:59
+     **/
+    @Override
+    public ResponseBean delPositionByIds(Set<String> ids) {
+        ids.forEach(id -> {
+            delPosition(id);
+        });
+        return new ResponseBean("批量删除操作成功！", true);
     }
 
     /**

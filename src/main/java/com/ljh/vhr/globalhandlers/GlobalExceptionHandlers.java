@@ -27,7 +27,7 @@ public class GlobalExceptionHandlers {
     public ResponseBean handleCommonException(BasicException exception) {
         exception.printStackTrace();
         ResponseBean responseBean = new ResponseBean(ResponseCode.ERROR);
-        responseBean.setData(exception.getMessage());
+        responseBean.setMsg(exception.getMessage());
         return responseBean;
     }
 }

@@ -21,7 +21,7 @@ public class JobLevel extends Base implements Serializable {
     private String name;
 
     @TableField("titleLevel")
-    private String titleLevel;
+    private Integer titleLevel;
 
     @TableField("createDate")
     private Date createDate;
@@ -36,11 +36,11 @@ public class JobLevel extends Base implements Serializable {
         this.name = name;
     }
 
-    public String getTitleLevel() {
+    public Integer getTitleLevel() {
         return titleLevel;
     }
 
-    public void setTitleLevel(String titleLevel) {
+    public void setTitleLevel(Integer titleLevel) {
         this.titleLevel = titleLevel;
     }
 

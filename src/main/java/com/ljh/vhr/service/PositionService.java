@@ -4,6 +4,7 @@ import com.ljh.vhr.constant.api.ResponseBean;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author LuoJiaHui
@@ -51,4 +52,14 @@ public interface PositionService {
      * @Date 2020/9/22 16:32
      **/
     ResponseBean delPosition(String id);
+
+    /**
+     * 匹配删除
+     *
+     * @param ids
+     * @return com.ljh.vhr.constant.api.ResponseBean
+     * @auth LuoJiaHui
+     * @Date 2020/9/23 16:58
+     **/
+    ResponseBean delPositionByIds(Set<String> ids);
 }
