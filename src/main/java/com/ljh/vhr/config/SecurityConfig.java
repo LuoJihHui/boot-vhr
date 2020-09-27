@@ -88,7 +88,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     } else if (exception instanceof DisabledException) {
                         responseBean.setData("账号被禁用,请联系管理员!");
                     } else if (exception instanceof BadCredentialsException) {
-                        responseBean.setData("用户名或密码输入错误,请重新输入");
+                        responseBean.setMsg("用户名或密码输入错误,请重新输入");
                     }
                     PrintWriter out = response.getWriter();
                     out.write(new ObjectMapper().writeValueAsString(responseBean));

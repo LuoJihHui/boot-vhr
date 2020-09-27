@@ -17,6 +17,14 @@ public class MenuRole extends Base implements Serializable {
 
     private Integer rid;
 
+    public MenuRole() {
+    }
+
+    public MenuRole(Integer mid, Integer rid) {
+        this.mid = mid;
+        this.rid = rid;
+    }
+
     public Integer getMid() {
         return mid;
     }

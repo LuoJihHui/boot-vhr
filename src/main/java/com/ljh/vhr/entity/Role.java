@@ -21,6 +21,14 @@ public class Role extends Base implements Serializable {
     @TableField("nameZh")
     private String nameZh;
 
+    public Role() {
+    }
+
+    public Role(String name, String nameZh) {
+        this.name = name;
+        this.nameZh = nameZh;
+    }
+
     public String getName() {
         return name;
     }

@@ -14,6 +14,7 @@ public enum ResponseCode {
      **/
     ERROR(-1, "error"),
     NO_LOGIN(40001, "Not logged in yet"),
+    PARAMS_NULL(40011, "请求参数不能为空!"),
     PROCESS(403, "Resolve processing current request"),
     NO_DATA_FOUND(40010, "No data found");
 

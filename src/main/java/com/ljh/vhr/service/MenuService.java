@@ -31,4 +31,14 @@ public interface MenuService {
      * @Date 2020/9/16 15:57
      **/
     List<Menu> getAllMenuWithRole();
+
+    /**
+     * 获取所有菜单-树状结构
+     *
+     * @param
+     * @return java.util.List<java.util.Map < java.lang.String, java.lang.Object>>
+     * @auth LuoJiaHui
+     * @Date 2020/9/25 13:45
+     **/
+     List<Map<String, Object>> listAllMenuTree();
 }

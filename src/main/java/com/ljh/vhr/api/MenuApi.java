@@ -49,4 +49,17 @@ public class MenuApi {
     public List<Menu> getAll() {
         return menuService.getAllMenuWithRole();
     }
+
+    /**
+     * 获取所有菜单-树状结构
+     *
+     * @param
+     * @return java.util.List<java.util.Map < java.lang.String, java.lang.Object>>
+     * @auth LuoJiaHui
+     * @Date 2020/9/25 13:45
+     **/
+    @GetMapping("/all/tree")
+    public List<Map<String, Object>> listAllMenuTree() {
+        return menuService.listAllMenuTree();
+    }
 }
