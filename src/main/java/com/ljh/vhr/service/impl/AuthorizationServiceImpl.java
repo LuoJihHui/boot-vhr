@@ -108,9 +108,8 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         if (!(name.startsWith("ROLE_") || name.startsWith("role_"))) {
             name = "ROLE_" + name;
         }
-        // 查询最大角色id
-        Integer id = roleMapper.queryLastRoleId();
-        Role role = new Role(++id, name, nameZh);
+        roleMapper.resetAutoIncrement();
+        Role role = new Role(name, nameZh);
         boolean b = roleMapper.insert(role) > 0;
         return new ResponseBean("添加角色成功!", b);
     }

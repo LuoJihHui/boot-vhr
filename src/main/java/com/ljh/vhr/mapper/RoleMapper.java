@@ -22,4 +22,14 @@ public interface RoleMapper extends BaseMapper<Role> {
      * @Date 2020/9/27 9:27
      **/
     Integer queryLastRoleId();
+
+    /**
+     * 重新设置自增列
+     *
+     * @param
+     * @return void
+     * @auth LuoJiaHui
+     * @Date 2020/9/27 9:41
+     **/
+    void resetAutoIncrement();
 }

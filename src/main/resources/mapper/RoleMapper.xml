@@ -8,4 +8,8 @@
         FROM
             role
     </select>
+
+    <select id="resetAutoIncrement">
+        ALTER TABLE role AUTO_INCREMENT = 1;
+    </select>
 </mapper>
