@@ -12,4 +12,14 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface RoleMapper extends BaseMapper<Role> {
+
+    /**
+     * 获取最新角色id
+     *
+     * @param
+     * @return java.lang.Integer
+     * @auth LuoJiaHui
+     * @Date 2020/9/27 9:27
+     **/
+    Integer queryLastRoleId();
 }
