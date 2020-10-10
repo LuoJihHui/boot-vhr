@@ -48,7 +48,9 @@ public class AuthorizationServiceImpl implements AuthorizationService {
     @Override
     public IPage<Map<String, Object>> allRoles(Integer num, Integer size) {
         Page<Role> page = new Page<>(num, size);
-        return roleMapper.selectMapsPage(page, null);
+        QueryWrapper<Role> roleQueryWrapper = new QueryWrapper<>();
+        roleQueryWrapper.eq("enabled", true);
+        return roleMapper.selectMapsPage(page, roleQueryWrapper);
     }
 
     /**
@@ -125,7 +127,12 @@ public class AuthorizationServiceImpl implements AuthorizationService {
     @Override
     @Transactional
     public ResponseBean delRole(Integer id) {
-        boolean delRole = roleMapper.deleteById(id) > 0;
+        // 禁用角色
+        Role role = new Role();
+        role.setId(id);
+        role.setEnabled(false);
+        boolean delRole = roleMapper.updateById(role) > 0;
+
         QueryWrapper<MenuRole> menuRoleQueryWrapper = new QueryWrapper<>();
         menuRoleQueryWrapper.eq("rid", id);
         menuRoleMapper.delete(menuRoleQueryWrapper);

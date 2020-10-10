@@ -21,12 +21,22 @@ public class Role extends Base implements Serializable {
     @TableField("nameZh")
     private String nameZh;
 
+    private Boolean enabled;
+
     public Role() {
     }
 
     public Role(String name, String nameZh) {
         this.name = name;
         this.nameZh = nameZh;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getName() {
@@ -50,6 +60,7 @@ public class Role extends Base implements Serializable {
         return "Role{" +
                 "name='" + name + '\'' +
                 ", nameZh='" + nameZh + '\'' +
+                ", enabled=" + enabled +
                 '}';
     }
 }

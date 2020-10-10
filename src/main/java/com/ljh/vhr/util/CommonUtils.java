@@ -45,6 +45,8 @@ public class CommonUtils {
     public static List<Map<String, Object>> outTreeMenu(List<Map<String, Object>> data) {
         List<Map<String, Object>> treeList = new ArrayList<>();
         for (Map<String, Object> map : data) {
+            // 父节点字段为null说明自身为最大的组织
+            // 为当前节点添加子节点
             if (map.get("parentId") == null) {
                 map.put("children", addChildModule(map, data));
                 treeList.add(map);

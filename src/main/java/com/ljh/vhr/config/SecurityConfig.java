@@ -111,6 +111,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .authenticationEntryPoint(((request, response, exception) -> {
                     response.setContentType("application/json;charset=utf-8");
+                    response.setStatus(401);
                     ResponseBean responseBean = new ResponseBean(ResponseCode.ERROR);
                     if (exception instanceof InsufficientAuthenticationException) {
                         responseBean.setMsg("尚未登录,非法请求,请联系管理员!");
