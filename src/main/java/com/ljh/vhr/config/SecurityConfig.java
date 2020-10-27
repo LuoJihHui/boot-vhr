@@ -80,13 +80,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     response.setContentType("application/json;charset=utf-8");
                     ResponseBean responseBean = new ResponseBean(ResponseCode.ERROR);
                     if (exception instanceof LockedException) {
-                        responseBean.setData("账号被锁定,请联系管理员!");
+                        responseBean.setMsg("账号被锁定,请联系管理员!");
                     } else if (exception instanceof CredentialsExpiredException) {
-                        responseBean.setData("密码已过期,请联系管理员!");
+                        responseBean.setMsg("密码已过期,请联系管理员!");
                     } else if (exception instanceof AccountExpiredException) {
-                        responseBean.setData("账号已过期,请联系管理员!");
+                        responseBean.setMsg("账号已过期,请联系管理员!");
                     } else if (exception instanceof DisabledException) {
-                        responseBean.setData("账号被禁用,请联系管理员!");
+                        responseBean.setMsg("账号被禁用,请联系管理员!");
                     } else if (exception instanceof BadCredentialsException) {
                         responseBean.setMsg("用户名或密码输入错误,请重新输入");
                     }

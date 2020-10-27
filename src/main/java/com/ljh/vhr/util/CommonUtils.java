@@ -2,6 +2,8 @@ package com.ljh.vhr.util;
 
 import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.collection.CollUtil;
+import com.ljh.vhr.entity.Hr;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,18 @@ public class CommonUtils {
         copyOptions.ignoreError();
         copyOptions.ignoreCase();
         return copyOptions;
+    }
+
+    /**
+     * 获取当前登录用户
+     *
+     * @param
+     * @return com.ljh.vhr.entity.Hr
+     * @auth LuoJiaHui
+     * @Date 2020/10/10 17:21
+     **/
+    public static Hr getCurrentHr() {
+        return (Hr) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
     /**

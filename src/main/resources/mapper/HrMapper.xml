@@ -10,7 +10,7 @@
         <result property="address" column="address" />
         <result property="enabled" column="enabled" />
         <result property="username" column="username" />
-        <result property="password" column="password" />
+<!--        <result property="password" column="password" />-->
         <result property="userFace" column="userface" />
         <result property="remark" column="remark" />
         <collection property="roles" ofType="com.ljh.vhr.entity.Role" column="id" select="loadRoleByUserId" />
@@ -33,5 +33,14 @@
         JOIN hr_role hr ON r.id = hr.rid
         WHERE
             hr.hrid = #{id}
+    </select>
+
+    <select id="getAllHrs" resultMap="loadHr">
+        SELECT
+            *
+        FROM
+            hr
+        WHERE
+            id != #{id}
     </select>
 </mapper>

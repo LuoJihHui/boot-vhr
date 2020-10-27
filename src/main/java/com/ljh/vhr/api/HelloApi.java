@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @description
  */
 @RestController
-public class HrApi {
+public class HelloApi {
 
     @GetMapping("hello")
     public String hello() {
