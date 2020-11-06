@@ -31,8 +31,8 @@ public class HrApi {
      * @Date 2020/10/10 17:20
      **/
     @GetMapping
-    public List<Map<String, Object>> listAllHr() {
-        return hrService.listAllHr();
+    public List<Map<String, Object>> listAllHr(@RequestParam(required = false) String keywords) {
+        return hrService.listAllHr(keywords);
     }
 
     /**
@@ -46,5 +46,31 @@ public class HrApi {
     @PutMapping
     public ResponseBean updateHr(@RequestBody Map<String, Object> hr) {
         return hrService.updateHr(hr);
+    }
+
+    /**
+     * 更新hr的角色信息
+     *
+     * @param param
+     * @return com.ljh.vhr.constant.api.ResponseBean
+     * @auth LuoJiaHui
+     * @Date 2020/10/28 10:56
+     **/
+    @PutMapping("/roles")
+    public ResponseBean updateRolesByHrId(@RequestBody Map<String, Object> param) {
+        return hrService.updateRolesByHrId(param);
+    }
+
+    /**
+     * 删除hr
+     *
+     * @param hrId
+     * @return com.ljh.vhr.constant.api.ResponseBean
+     * @auth LuoJiaHui
+     * @Date 2020/10/28 11:20
+     **/
+    @DeleteMapping("/{hr_id}")
+    public ResponseBean delHr(@PathVariable("hr_id") String hrId) {
+        return hrService.delHr(hrId);
     }
 }

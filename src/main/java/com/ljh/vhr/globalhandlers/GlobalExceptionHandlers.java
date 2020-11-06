@@ -3,6 +3,7 @@ package com.ljh.vhr.globalhandlers;
 import com.ljh.vhr.constant.api.ResponseBean;
 import com.ljh.vhr.constant.api.ResponseCode;
 import com.ljh.vhr.exception.BasicException;
+import com.ljh.vhr.exception.NonDataException;
 import com.ljh.vhr.exception.ParamsNullException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -46,4 +47,21 @@ public class GlobalExceptionHandlers {
         responseBean.setMsg("请求参数不能为空!");
         return responseBean;
     }
+
+    /**
+     * 参数空异常
+     *
+     * @param exception
+     * @return
+     */
+    @ExceptionHandler(value = NonDataException.class)
+    @ResponseBody
+    public ResponseBean handleCommonException(NonDataException exception) {
+        exception.printStackTrace();
+        ResponseBean responseBean = new ResponseBean(ResponseCode.NO_DATA_FOUND);
+        responseBean.setMsg("未查询到数据!");
+        return responseBean;
+    }
+
+
 }

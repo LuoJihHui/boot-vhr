@@ -2,6 +2,7 @@ package com.ljh.vhr.util;
 
 import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.collection.CollUtil;
+import com.ljh.vhr.constant.SystemConstant;
 import com.ljh.vhr.entity.Hr;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -89,5 +90,14 @@ public class CommonUtils {
         }
         // 当遍历完成，返回调用的父节点的所有子节点
         return childList;
+    }
+
+
+    public static int formatPageNum(Integer pageNum) {
+        return pageNum == null || pageNum <= 0 ? 1 : pageNum;
+    }
+
+    public static int formatPageSize(Integer pageSize) {
+        return pageSize == null || pageSize <= 0 ? SystemConstant.MAX_PAGE_SIZE : pageSize;
     }
 }

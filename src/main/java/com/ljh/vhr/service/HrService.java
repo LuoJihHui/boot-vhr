@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public interface HrService {
 
-    List<Map<String, Object>> listAllHr();
+    List<Map<String, Object>> listAllHr(String keywords);
 
 
     /**
@@ -24,4 +24,24 @@ public interface HrService {
      * @Date 2020/10/27 16:17
      **/
     ResponseBean updateHr(Map<String, Object> hr);
+
+    /**
+     * 更新hr的角色信息
+     *
+     * @param param
+     * @return com.ljh.vhr.constant.api.ResponseBean
+     * @auth LuoJiaHui
+     * @Date 2020/10/28 10:56
+     **/
+    ResponseBean updateRolesByHrId(Map<String, Object> param);
+
+    /**
+     * 删除hr
+     *
+     * @param hrId
+     * @return com.ljh.vhr.constant.api.ResponseBean
+     * @auth LuoJiaHui
+     * @Date 2020/10/28 11:20
+     **/
+    ResponseBean delHr(String hrId);
 }

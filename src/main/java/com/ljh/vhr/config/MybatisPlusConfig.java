@@ -1,7 +1,6 @@
 package com.ljh.vhr.config;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
  * @author luojihui
  * @date 2019/12/12 18:00
  */
-@MapperScan("com.ljh.vhr.mapper")
 @Configuration
 public class MybatisPlusConfig {
 

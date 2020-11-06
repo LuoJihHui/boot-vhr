@@ -42,5 +42,11 @@
             hr
         WHERE
             id != #{id}
+        AND
+            enabled != -1
+        <if test="keywords != null and keywords != ''">
+        AND
+            name like concat('%',#{keywords},'%')
+        </if>
     </select>
 </mapper>

@@ -47,7 +47,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
      **/
     @Override
     public IPage<Map<String, Object>> allRoles(Integer num, Integer size) {
-        Page<Role> page = new Page<>(num, size);
+        Page<Role> page = new Page<>(num == null ? 1 : num, size == null ? 10 : size);
         QueryWrapper<Role> roleQueryWrapper = new QueryWrapper<>();
         roleQueryWrapper.eq("enabled", true);
         return roleMapper.selectMapsPage(page, roleQueryWrapper);

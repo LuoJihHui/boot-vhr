@@ -21,4 +21,11 @@ public class SystemConstant {
     public static final String ANONYMOUS_LOGO = "ROLE_LOGIN";
 
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    /**
+     * 每页最大数据量
+     *
+     * @auth LuoJiaHui
+     * @Date 2020/10/30 16:31
+     **/
+    public static final int MAX_PAGE_SIZE = 10;
 }
