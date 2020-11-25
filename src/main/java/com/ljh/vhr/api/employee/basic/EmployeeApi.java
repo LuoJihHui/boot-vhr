@@ -3,10 +3,8 @@ package com.ljh.vhr.api.employee.basic;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.ljh.vhr.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -63,8 +61,16 @@ public class EmployeeApi {
                 engageForm, department, beginDate, endDate, isExport, response);
     }
 
-//    public ResponseEntity<byte[]> exportData(){
-//
-//
-//    }
+    /**
+     * 上传文件并提供改文件预览内容
+     *
+     * @param file
+     * @return java.util.Map<java.lang.String, java.lang.Object>
+     * @auth LuoJiaHui
+     * @Date 2020/11/6 15:40
+     **/
+    @PostMapping
+    public Map<String, Object> uploadOverView(@RequestParam MultipartFile file) throws IOException {
+        return employeeService.uploadOverView(file);
+    }
 }

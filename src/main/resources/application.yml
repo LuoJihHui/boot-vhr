@@ -4,14 +4,14 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss # 格式化时间
     time-zone: GMT+8 # 时区
   datasource:
-    url: jdbc:mysql:///vhr?useUncode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://192.168.253.10:3310/vhr?useUncode=true&characterEncoding=UTF-8
     username: root
-    password: root
+    password: 123456
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
 
   redis:
-    url: localhost
+    url: 192.168.253.10
     port: 6379
     password:
     database: 1

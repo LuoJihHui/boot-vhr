@@ -5,10 +5,12 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ljh.vhr.entity.*;
+import com.ljh.vhr.excellistener.UploadDataListener;
 import com.ljh.vhr.excelmodel.EmployeeModel;
 import com.ljh.vhr.exception.NonDataException;
 import com.ljh.vhr.mapper.*;
@@ -16,6 +18,7 @@ import com.ljh.vhr.service.EmployeeService;
 import com.ljh.vhr.util.CommonUtils;
 import com.ljh.vhr.util.EasyExcelUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -93,8 +96,26 @@ public class EmployeeServiceImpl implements EmployeeService {
             EasyExcelUtils.exportResourceExcel(listEmployeeModel, response, "员工详情", EmployeeModel.class);
             return null;
         }
+        // 下载模板
+        if (isExport == 4) {
+            EasyExcelUtils.exportResourceExcel(null, response, "员工详情", EmployeeModel.class);
+        }
         // 普通查询
         return iPage;
+    }
+
+    /**
+     * 上传文件并提供改文件预览内容
+     *
+     * @param file
+     * @return java.util.Map<java.lang.String, java.lang.Object>
+     * @auth LuoJiaHui
+     * @Date 2020/11/6 15:40
+     **/
+    @Override
+    public Map<String, Object> uploadOverView(MultipartFile file) throws IOException {
+        EasyExcel.read(file.getInputStream(), EmployeeModel.class, new UploadDataListener()).sheet().doRead();
+        return null;
     }
 
     /**
@@ -114,7 +135,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         QueryWrapper<Employee> wrapper = new QueryWrapper<>();
         // 参数匹配
         buildWrapper("name", keywords, wrapper, true);
-        buildWrapper("workID", keywords, wrapper, true);
+//        buildWrapper("workID", keywords, wrapper, true);
         buildWrapper("politicId", politicId, wrapper, true);
         buildWrapper("nationId", nationId, wrapper, true);
         buildWrapper("jobLevelId", jobLevelId, wrapper, true);

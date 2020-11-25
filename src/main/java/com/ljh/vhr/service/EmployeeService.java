@@ -1,6 +1,7 @@
 package com.ljh.vhr.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -38,5 +39,13 @@ public interface EmployeeService {
                                                 String beginDate, String endDate, Integer isExport,
                                                 HttpServletResponse response) throws IOException;
 
-
+    /**
+     * 上传文件并提供改文件预览内容
+     *
+     * @param file
+     * @return java.util.Map<java.lang.String, java.lang.Object>
+     * @auth LuoJiaHui
+     * @Date 2020/11/6 15:40
+     **/
+    Map<String, Object> uploadOverView(MultipartFile file) throws IOException;
 }
