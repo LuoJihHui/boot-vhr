@@ -3,12 +3,14 @@ package com.ljh.vhr.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 
+import java.io.Serializable;
+
 /**
  * @author LuoJiaHui
  * @date 2020/9/15 10:58
  * @description
  */
-public class Base {
+public class Base implements Serializable {
 
     @TableId(type = IdType.AUTO)
     private Integer id;

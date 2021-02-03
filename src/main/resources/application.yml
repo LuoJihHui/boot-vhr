@@ -4,18 +4,18 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss # 格式化时间
     time-zone: GMT+8 # 时区
   datasource:
-    url: jdbc:mysql://192.168.253.10:3310/vhr?useUncode=true&characterEncoding=UTF-8
+    url: jdbc:mysql:///vhr?useUncode=true&characterEncoding=UTF-8
     username: root
-    password: 123456
+    password: root
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.jdbc.Driver
 
   redis:
-    url: 192.168.253.10
+    # docker myredis
+    host: localhost
     port: 6379
     password:
-    database: 1
-
+    database: 5
 mybatis-plus:
   type-aliases-package: com.ljh.vhr.entity
   mapper-locations: classpath:mapper/*.xml
@@ -24,4 +24,6 @@ mybatis-plus:
     call-setters-on-nulls: true
 
 server:
-  port: 8081
+  port: 8080
+  servlet:
+    context-path: /api

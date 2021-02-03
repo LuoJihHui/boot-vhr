@@ -2,6 +2,8 @@ package com.ljh.vhr.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 
+import java.io.Serializable;
+
 /**
  * 前端路由表中的额外自定义字段
  *
@@ -9,7 +11,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
  * @date 2020/9/15 17:28
  * @description
  */
-public class Meta {
+public class Meta implements Serializable {
 
     @TableField("keepAlive")
     private Boolean keepalive;

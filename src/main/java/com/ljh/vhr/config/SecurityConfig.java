@@ -17,6 +17,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.session.SessionAuthenticationException;
+import org.springframework.session.FindByIndexNameSessionRepository;
+import org.springframework.session.security.SpringSessionBackedSessionRegistry;
 
 import java.io.PrintWriter;
 
@@ -36,6 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private CustomDecisionManager decisionManager;
     @Autowired
     private RoleResourcePermissionsFilter roleResourcePermissionsFilter;
+    @Autowired
+    private FindByIndexNameSessionRepository sessionRepository;
 
     @Bean
     PasswordEncoder passwordEncoder() {
@@ -48,8 +53,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web) {
         web.ignoring().antMatchers("/login");
+    }
+
+    /**
+     * 构建Security的Session策略;
+     * 这里使用Redis实现;方便做集群通信
+     *
+     * @param sessionRepository
+     * @return org.springframework.session.security.SpringSessionBackedSessionRegistry
+     * @auth LuoJiaHui
+     * @Date 2021/2/3 17:12
+     **/
+    @Bean
+    SpringSessionBackedSessionRegistry sessionRegistry(FindByIndexNameSessionRepository sessionRepository) {
+        return new SpringSessionBackedSessionRegistry(sessionRepository);
     }
 
     @Override
@@ -89,6 +108,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         responseBean.setMsg("账号被禁用,请联系管理员!");
                     } else if (exception instanceof BadCredentialsException) {
                         responseBean.setMsg("用户名或密码输入错误,请重新输入");
+                    } else if (exception instanceof SessionAuthenticationException) {
+                        responseBean.setMsg("当前用户已登录;请勿重复登录");
                     }
                     PrintWriter out = response.getWriter();
                     out.write(new ObjectMapper().writeValueAsString(responseBean));
@@ -106,7 +127,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     out.close();
                 })).permitAll()
                 .and()
-                .csrf().disable()
+                .csrf().disable().cors().and()
                 // 配置请求失败后的操作,不要默认的重定向
                 .exceptionHandling()
                 .authenticationEntryPoint(((request, response, exception) -> {
@@ -120,6 +141,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     out.write(new ObjectMapper().writeValueAsString(responseBean));
                     out.flush();
                     out.close();
-                }));
+                }))
+                // 集群session共享
+                .and()
+                .sessionManagement()
+                // 同时最大Session数
+                .maximumSessions(1)
+                // 是否验证登录
+                .maxSessionsPreventsLogin(true)
+                // 使用自定义Session策略
+                .sessionRegistry(sessionRegistry(sessionRepository));
     }
 }
